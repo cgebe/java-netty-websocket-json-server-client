@@ -11,7 +11,7 @@ HowTo:
 
 		"ping" for simple pinging the server
 		"close" to close the connection
-		everything else is handled by the WebSocketTextFrameHandler -> e.g. json messages 
+		everything else is handled by the WebSocketTextFrameHandler -> e.g. JSON messages 
 		
 	via command line 
 4. Now create appropriate POJOs to your JSON messages in order process them efficiently as java objects.
