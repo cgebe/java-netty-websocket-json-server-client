@@ -25,7 +25,6 @@ public class WebSocketServerChannelInitializer extends ChannelInitializer<Socket
 		pipeline.addLast(new HttpServerCodec());
         pipeline.addLast(new HttpObjectAggregator(65536));
         pipeline.addLast("websocket", new WebSocketHandler(server));
-        pipeline.addLast("websockettextframer", new WebSocketTextFrameHandler());
         
         // add additional handlers
         for (int i = 0; i < server.getHandlers().size(); i++) {
