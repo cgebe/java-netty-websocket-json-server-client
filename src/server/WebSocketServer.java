@@ -50,8 +50,8 @@ public class WebSocketServer {
 
             Channel ch = b.bind(port).sync().channel();
 
-            // test via browser
-            System.out.println("Open your web browser and navigate to " + (ssl? "https" : "http") + "://127.0.0.1:" + port + '/');
+            // test via browser also possible
+            // System.out.println("Open your web browser and navigate to " + (ssl? "https" : "http") + "://127.0.0.1:" + port + '/');
 
             ch.closeFuture().sync();
         } finally {

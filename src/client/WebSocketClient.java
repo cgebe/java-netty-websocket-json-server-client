@@ -106,7 +106,8 @@ public class WebSocketClient {
                     WebSocketFrame frame = new PingWebSocketFrame(Unpooled.wrappedBuffer(new byte[] { 8, 1, 8, 1 }));
                     ch.writeAndFlush(frame);
                 } else {
-                    WebSocketFrame frame = new TextWebSocketFrame(msg);
+                	String jsonExample = "{\"foo\" : \"foo\", \"bar\" : \"bar\"}";
+                    WebSocketFrame frame = new TextWebSocketFrame(jsonExample);
                     ch.writeAndFlush(frame);
                 }
             }
