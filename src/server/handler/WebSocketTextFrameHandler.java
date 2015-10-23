@@ -12,6 +12,7 @@ public class WebSocketTextFrameHandler extends SimpleChannelInboundHandler<TextW
 		Gson gson = new Gson();
 		//Message msg = gson.fromJson(frame.text(), Message.class);
 		System.out.println("received a text frame: " + frame.text());
+		//ctx.fireChannelRead(msg);
 	}
 
 }

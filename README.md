@@ -14,4 +14,6 @@ HowTo:
 		everything else is handled by the WebSocketTextFrameHandler -> e.g. JSON messages 
 		
 	via command line 
-4. Now create appropriate POJOs to your JSON messages in order process them efficiently as java objects.
+4. Now create appropriate POJO to your JSON messages in order process them efficiently as java objects.
+5. Adjust gson.fromJson for your POJO and comment out //ctx.fireChannelRead(msg); in WebSocketTextFrameHandler in order to send your POJOs upstream
+6. Create appropriate upstream handler(s) for your POJO.
