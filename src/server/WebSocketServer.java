@@ -1,10 +1,7 @@
 package server;
 
-import java.util.List;
-
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -19,15 +16,13 @@ public class WebSocketServer {
 	
 	private int port;
 	private String webSocketPath;
-	private List<ChannelHandler> handlers;
 	
 	private boolean ssl = System.getProperty("ssl") != null;
 	private SslContext sslCtx;
 	
-    public WebSocketServer(int port, String webSocketPath, List<ChannelHandler> handlers) {
+    public WebSocketServer(int port, String webSocketPath) {
     	this.setPort(port);
     	this.setWebSocketPath(webSocketPath);
-    	this.setHandlers(handlers);
     }
     
     public void run() throws Exception {
@@ -86,14 +81,6 @@ public class WebSocketServer {
 
 	public void setWebSocketPath(String webSocketPath) {
 		this.webSocketPath = webSocketPath;
-	}
-
-	public List<ChannelHandler> getHandlers() {
-		return handlers;
-	}
-
-	public void setHandlers(List<ChannelHandler> handlers) {
-		this.handlers = handlers;
 	}
 
     

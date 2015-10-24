@@ -1,6 +1,9 @@
 package server;
 
+import server.handler.MessageToTextFrameHandler;
+import server.handler.TextFrameToMessageHandler;
 import server.handler.WebSocketHandler;
+import test.handler.ProcessMessageHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -23,12 +26,10 @@ public class WebSocketServerChannelInitializer extends ChannelInitializer<Socket
         }
 		pipeline.addLast(new HttpServerCodec());
         pipeline.addLast(new HttpObjectAggregator(65536));
-        pipeline.addLast("websocket", new WebSocketHandler(server));
-        
-        // add additional handlers
-        for (int i = 0; i < server.getHandlers().size(); i++) {
-        	pipeline.addLast("handler_" + i, server.getHandlers().get(i));
-        }
+        pipeline.addLast(new WebSocketHandler(server));
+        pipeline.addLast(new MessageToTextFrameHandler());
+        pipeline.addLast(new TextFrameToMessageHandler());
+        pipeline.addLast(new ProcessMessageHandler());
 	}
 
 }
